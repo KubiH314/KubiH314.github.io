@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Topology</title>
+  <meta name="description" content="A minimalist GitHub Pages site for notes and materials on topology." />
+  <meta property="og:title" content="Topology" />
+  <meta property="og:description" content="Notes, primers, exercises, and references on topology for the hobby mathematician." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0f172a;
+      --muted: #475569;
+      --link: #0ea5e9;
+      --accent: #f59e0b;
+      --card: #f8fafc;
+      --border: #e2e8f0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1020;
+        --fg: #e5e7eb;
+        --muted: #94a3b8;
+        --link: #38bdf8;
+        --accent: #fbbf24;
+        --card: #0f172a;
+        --border: #1f2937;
+      }
+    }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial; background: var(--bg); color: var(--fg); line-height: 1.6; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { position: sticky; top: 0; z-index: 10; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; padding: .75rem 1.25rem; }
+    .brand { font-weight: 700; letter-spacing: .2px; }
+    .chip { display:inline-flex; align-items:center; gap:.3rem; font-size:.9rem; padding:.35rem .6rem; border:1px solid var(--border); border-radius: 999px; background: var(--card); }
+    .btn { border:1px solid var(--border); padding:.5rem .8rem; border-radius:.6rem; background: var(--card); }
+    main { max-width: 900px; margin: 0 auto; padding: 1.25rem; }
+    section { padding: 2rem 0; }
+    section h2 { margin: 0 0 .5rem; font-size: 1.6rem; }
+    .card { border:1px solid var(--border); background: var(--card); border-radius:.8rem; padding:1rem; }
+    footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--muted); text-align:center; }
+  </style>
+  <script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <span class="brand">Topology</span>
+      <a href="#notes" class="chip">Notes</a>
+      <a href="#primers" class="chip">Primers</a>
+      <a href="#exercises" class="chip">Exercises</a>
+      <a href="#references" class="chip">References</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Topology</h1>
+    <p class="subtitle">A personal collection of notes, primers, exercises, and references compiled by a hobby mathematician.</p>
+
+    <section id="notes">
+      <h2>Notes</h2>
+      <p>Informal notes on general and algebraic topology topics, updated occasionally.</p>
+      <ul>
+        <li><a href="notes/intro.pdf">Introduction to Topological Spaces</a></li>
+        <li><a href="notes/continuity.pdf">Continuity and Open Sets</a></li>
+        <li><a href="notes/compactness.pdf">Compactness and Connectedness</a></li>
+      </ul>
+    </section>
+
+    <section id="primers">
+      <h2>Primers</h2>
+      <p>Short overviews of foundational ideas, aimed at intuition rather than formality.</p>
+      <ul>
+        <li><a href="primers/metric.pdf">Metric Spaces Primer</a></li>
+        <li><a href="primers/homotopy.pdf">A Glimpse at Homotopy</a></li>
+        <li><a href="primers/quotient.pdf">Quotient Topology Explained</a></li>
+      </ul>
+    </section>
+
+    <section id="exercises">
+      <h2>Exercises</h2>
+      <p>Self-contained problem sets to explore the structure of topological spaces.</p>
+      <ul>
+        <li><a href="exercises/sheet1.pdf">Sheet 1 – Open Sets and Bases</a></li>
+        <li><a href="exercises/sheet2.pdf">Sheet 2 – Continuity and Subspaces</a></li>
+        <li><a href="exercises/sheet3.pdf">Sheet 3 – Compactness and Connectedness</a></li>
+      </ul>
+    </section>
+
+    <section id="references">
+      <h2>References</h2>
+      <ul>
+        <li>James R. Munkres, <em>Topology</em></li>
+        <li>George F. Simmons, <em>Introduction to Topology and Modern Analysis</em></li>
+        <li>Stephen Willard, <em>General Topology</em></li>
+        <li>John Lee, <em>Introduction to Topological Manifolds</em></li>
+        <li>Online resource: <a href="https://topology-course.github.io">Topology Course Materials</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>About</h2>
+        <p>Maintained by a hobby mathematician with a passion for pure reasoning and abstract structure. All materials are freely available for educational use.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Hobby Mathematician. Built with HTML/CSS and hosted on GitHub Pages.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
