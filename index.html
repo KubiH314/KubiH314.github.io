@@ -16,7 +16,13 @@
       --accent: #f59e0b;
       --card: #f8fafc;
       --border: #e2e8f0;
+
+      /* Tweak these two if you want the photo bigger/smaller */
+      --photo-size: 260px;
+      --photo-top-offset: 92px; /* distance from top of page (under header) */
+      --photo-left-offset: 18px;
     }
+
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0b1020;
@@ -70,53 +76,57 @@
       background: var(--card);
     }
 
-    main { max-width: 900px; margin: 0 auto; padding: 1.25rem; }
-
-    /* --- NEW: layout row for image + about card --- */
-    .hero {
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      padding: 2rem 0;
-    }
-
-    /* Square photo on the left, beneath the header */
-    .profile-photo {
-      width: 220px;          /* adjust size here */
-      height: 220px;         /* keep square */
-      object-fit: cover;     /* crops nicely */
-      border-radius: .6rem;  /* slight rounding; set to 0 for sharp corners */
-      border: 1px solid var(--border);
-      background: var(--card);
-      flex: 0 0 auto;
-    }
-
-    /* Make the about card fill the remaining space */
-    .hero .card {
-      flex: 1 1 auto;
-    }
-
-    /* Responsive: stack on small screens */
-    @media (max-width: 700px) {
-      .hero { flex-direction: column; }
-      .profile-photo { width: 100%; height: auto; aspect-ratio: 1 / 1; }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.25rem;
     }
 
     section { padding: 2rem 0; }
     section h2 { margin: 0 0 .5rem; font-size: 1.6rem; }
 
     .card {
-      border:1px solid var(--border);
+      border: 1px solid var(--border);
       background: var(--card);
-      border-radius:.8rem;
-      padding:1rem;
+      border-radius: .8rem;
+      padding: 1rem;
     }
 
     footer {
       padding: 2rem 0;
       border-top: 1px solid var(--border);
       color: var(--muted);
-      text-align:center;
+      text-align: center;
+    }
+
+    /* --- PHOTO: pinned to the left UNDER the header, does NOT affect layout --- */
+    .side-photo {
+      position: absolute;
+      top: var(--photo-top-offset);
+      left: var(--photo-left-offset);
+      width: var(--photo-size);
+      height: var(--photo-size);
+      object-fit: cover;
+
+      /* square (not circle). set to 0px if you want sharp corners */
+      border-radius: 12px;
+
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      z-index: 1;
+    }
+
+    /* If the screen is too narrow, don't let the photo overlap the centered content */
+    @media (max-width: 1200px) {
+      .side-photo {
+        position: static;     /* becomes normal element */
+        display: block;
+        margin: 1.25rem auto 0;
+        width: min(320px, 90vw);
+        height: auto;
+        aspect-ratio: 1 / 1;  /* keeps it square */
+      }
     }
   </style>
 
@@ -133,11 +143,11 @@
     </nav>
   </header>
 
-  <main>
-    <!-- Image moved beneath header, left side, square + bigger -->
-    <div class="hero">
-      <img src="images/me.jpg" alt="Kubi" class="profile-photo">
+  <!-- Photo sits on far-left under header without shifting cards -->
+  <img src="images/me.jpg" alt="Kubi" class="side-photo">
 
+  <main>
+    <section>
       <div class="card">
         <h2>About</h2>
         <p>
@@ -145,7 +155,7 @@
           Reach out to me at <a href="mailto:kubi.hruzewicz@gmail.com">kubi.hruzewicz@gmail.com</a>.
         </p>
       </div>
-    </div>
+    </section>
 
     <section>
       <div class="card">
